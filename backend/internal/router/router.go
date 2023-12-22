@@ -10,7 +10,7 @@ import (
 )
 
 var (
-	r *gin.Engine
+	r = gin.Default()
 
 	DIR_FRONT string
 )
@@ -23,7 +23,7 @@ func GetEngine() *gin.Engine {
 func InitRouter() {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("[Error]: Couldn't load .env file")
+		log.Fatal("[Error]: Couldn't load .env file: " + err.Error())
 	}
 
 	DIR_FRONT = os.Getenv("DIR_FRONT")
@@ -31,9 +31,25 @@ func InitRouter() {
 		c.File(DIR_FRONT + "/html/home.html")
 	})
 
+	setupFrontLinking()
+	setupChampionRoutes()
 	r.Run(":5000")
 }
 
+func setupFrontLinking() {
+	r.GET("/css/:styling/", func(c *gin.Context) {
+		c.File(DIR_FRONT + "/css/" + c.Param("styling"))
+	})
+
+	r.GET("/js/:script/", func(c *gin.Context) {
+		c.File(DIR_FRONT + "/js/" + c.Param("script"))
+	})
+
+	r.GET("/images/:image/", func(c *gin.Context) {
+		c.File(DIR_FRONT + "/images/" + c.Param("image"))
+	})
+}
+
 func setupChampionRoutes() {
-	r.GET("/champions/", handler.ChampionsGET)
+	r.GET("/champions", handler.ChampionsGET)
 }
