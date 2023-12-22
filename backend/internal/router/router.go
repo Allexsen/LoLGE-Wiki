@@ -37,6 +37,10 @@ func InitRouter() {
 }
 
 func setupFrontLinking() {
+	r.GET("/html/:html/", func(c *gin.Context) {
+		c.File(DIR_FRONT + "/html/" + c.Param("html"))
+	})
+
 	r.GET("/css/:styling/", func(c *gin.Context) {
 		c.File(DIR_FRONT + "/css/" + c.Param("styling"))
 	})
