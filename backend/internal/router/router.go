@@ -4,7 +4,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/Allexsen/LoLGE-Wiki/backend/internal/handler"
+	"github.com/Allexsen/LoLGE-Wiki/backend/internal/handlers"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
@@ -55,5 +55,5 @@ func setupFrontLinking() {
 }
 
 func setupChampionRoutes() {
-	r.GET("/champions", handler.ChampionsGET)
+	r.GET("/champions", handlers.ChampionsGET)
 }

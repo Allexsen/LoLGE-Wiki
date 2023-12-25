@@ -1,4 +1,4 @@
-package handler
+package handlers
 
 import (
 	"log"
@@ -16,7 +16,7 @@ func init() {
 }
 
 var (
-	DIR_FRONT string = os.Getenv("DIR_FRONT") // Frontend directory
+	DIR_FRONT string = os.Getenv("DIR_FRONT") // Frontend directory, asbolute path
 )
 
 // Placeholder routes to define all initial paths
