@@ -1,0 +1,103 @@
+openapi: 0.0.1
+info:
+    title: Testing API
+    version: 1.0.0
+
+paths:
+  /html/{htmlName}:
+    get:
+      summary: Retrieve HTML file
+      parameters:
+        - in: path
+          name: htmlName
+          required: true
+          schema:
+            type: string
+            description: Name of the HTML file
+      responses:
+        '200':
+          description: Successfully returned the HTML file
+          content:
+            text/HTML:
+              schema:
+                type: string
+                example: "<!DOCTYPE html><html><head><title>Example</title></head><body><p>Hello, World!</p></body></html>"
+        '304':
+          description: Not modified - Content hasn't changed since the last access
+        '404':
+          description: Error 404, the HTML file was not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                  message:
+                    type: string
+                  example:
+                    error: "Not Found!"
+                    message: "Error 404 - The requested resource doesn't exist."
+  
+  /css/{cssName}:
+    get:
+      summary: Retrieve CSS file
+      parameters:
+        - in: path
+          name: cssName
+          required: true
+          schema:
+            type: string
+            description: Name of the CSS file
+      responses:
+        '200':
+          description: Successfully returned the CSS file
+          content:
+            text/css:
+              schema:
+                type: string
+                example: "body { background-color: #fff; }"
+        '404':
+          description: Error 404, the CSS file was not found
+  
+  /js/{scriptName}:
+    get:
+      summary: Retrieve JavaScript file
+      parameters:
+        - in: path
+          name: scriptName
+          required: true
+          schema:
+            type: string
+            description: Name of the JavaScript file
+      responses:
+        '200':
+          description: Successfully retrieved JavaScript file
+          content:
+            application/javascript:
+              schema:
+                type: string
+                example: "console.log('Hello, world!');"
+        '404':
+          description: JavaScript file not found
+  
+  /images/{imageName}:
+    get:
+      summary: Retrieve an image file
+      parameters:
+        - in: path
+          name: imageName
+          required: true
+          schema:
+            type: string
+          description: Name of the image file
+      responses:
+        '200':
+          description: Successfully retrieved image
+          content:
+            image/png:
+              schema:
+                type: string
+                format: binary
+        '404':
+          description: Image file not found
