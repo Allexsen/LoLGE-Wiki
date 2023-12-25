@@ -11,6 +11,11 @@ body {
     background-position: center;
 }
 
+.test {
+    position: absolute;
+    top: 0;
+}
+
 .header {
     position: fixed;
     top: 0;
