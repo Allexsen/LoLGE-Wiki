@@ -57,6 +57,8 @@ paths:
               schema:
                 type: string
                 example: "body { background-color: #fff; }"
+        '304':
+          description: Not modified - Content hasn't changed since the last access
         '404':
           description: Error 404, the CSS file was not found
   
@@ -78,6 +80,8 @@ paths:
               schema:
                 type: string
                 example: "console.log('Hello, world!');"
+        '304':
+          description: Not modified - Content hasn't changed since the last access
         '404':
           description: JavaScript file not found
   
@@ -99,5 +103,7 @@ paths:
               schema:
                 type: string
                 format: binary
+        '304':
+          description: Not modified - Content hasn't changed since the last access
         '404':
           description: Image file not found
