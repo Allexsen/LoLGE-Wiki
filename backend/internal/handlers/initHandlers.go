@@ -13,14 +13,14 @@ func init() {
 	if err != nil {
 		log.Fatal("[Error]: Couldn't load .env: " + err.Error())
 	}
+
+	DIR_FRONT = os.Getenv("DIR_FRONT")
 }
 
 var (
-	DIR_FRONT string = os.Getenv("DIR_FRONT") // Frontend directory, asbolute path
+	DIR_FRONT string // Frontend directory, asbolute path
 )
 
-func HomeGET() gin.HandlerFunc {
-	return func(c *gin.Context) {
-		c.File(DIR_FRONT + "/html/home.html")
-	}
+func HomeGET(c *gin.Context) {
+	c.File(DIR_FRONT + "/html/home.html")
 }

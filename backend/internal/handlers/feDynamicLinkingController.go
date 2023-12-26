@@ -1,8 +1,6 @@
 package handlers
 
 import (
-	"log"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,7 +9,6 @@ func HtmlGET(c *gin.Context) {
 }
 
 func CssGET(c *gin.Context) {
-	log.Println(DIR_FRONT + "/css/" + c.Param("styling"))
 	c.File(DIR_FRONT + "/css/" + c.Param("styling"))
 }
 

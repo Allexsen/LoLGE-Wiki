@@ -28,8 +28,8 @@ func InitRouter() {
 
 	DIR_FRONT = os.Getenv("DIR_FRONT")
 
-	r.GET("/", handlers.HomeGET())
-	r.GET("/home", handlers.HomeGET())
+	r.GET("/", handlers.HomeGET)
+	r.GET("/home", handlers.HomeGET)
 
 	setupChampionRouter()
 	setupCommentRouter()
